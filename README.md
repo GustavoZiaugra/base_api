@@ -1,19 +1,42 @@
-# BaseApi
+# Base API
 
-To start your Phoenix server:
+![CI](https://github.com/GustavoZiaugra/base_api/workflows/CI/badge.svg?branch=main)
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server`
+Base API is a web application using the Phoenix framework with Elixir.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Its basic purpose was to offer a pre-configured set of dependencies used in every robust API,considering part of deployment and infrastructure, tests, code analysis, small functionalities and CI.
+I will try as much as possible to make each commit as explicit as possible regarding the implementation to follow a guide for those interested.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+### Versions
+* [Elixir] - v1.11.1
+* [Erlang] - OTP 23.0
+* [Phoenix Framework] - V1.56.0
+* [Postgres] - V12.0.0
 
-## Learn more
+### How to run it?
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+Without Docker:
+After installing the Elixir, Postgres and the technologies mentioned above, do the following commands:
+
+```sh
+$ mix ecto.setup
+$ mix phx.server
+```
+
+With Docker:
+For now you can generate a release to deploy/run whatever you want.
+Just do this following command:
+```sh
+$ docker build . --tag #{your_tag_name}
+```
+
+### Development
+
+Want to contribute? Great!
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Please make sure to update the tests as appropriate.
+
+----
+
+MIT
