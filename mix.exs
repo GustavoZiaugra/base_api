@@ -11,6 +11,14 @@ defmodule BaseApi.MixProject do
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
+      dialyzer: [
+        plt_add_apps: [:ex_unit],
+        remove_defaults: [:unknown],
+        plt_add_deps: [:transitive],
+        plt_core_path: "priv/plts",
+        plt_file: {:no_warn, "priv/plts/dialyzer.plt"},
+        ignore_warnings: ".dialyzer_ignore"
+      ],
       releases: [
         base_api: [
           applications: [base_api: :permanent],
@@ -50,7 +58,8 @@ defmodule BaseApi.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:bypass, "~> 1.0", only: :test},
-      {:httpoison, "~> 1.7"}
+      {:httpoison, "~> 1.7"},
+      {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false}
     ]
   end
 
