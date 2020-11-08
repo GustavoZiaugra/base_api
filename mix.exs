@@ -10,7 +10,13 @@ defmodule BaseApi.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      releases: [
+        base_api: [
+          applications: [base_api: :permanent],
+          runtime_config_path: "config/releases.exs"
+        ]
+      ]
     ]
   end
 
