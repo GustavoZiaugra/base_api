@@ -11,6 +11,14 @@ defmodule BaseApi.MixProject do
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test,
+        t: :test
+      ],
       dialyzer: [
         plt_add_apps: [:ex_unit],
         remove_defaults: [:unknown],
@@ -60,7 +68,8 @@ defmodule BaseApi.MixProject do
       {:bypass, "~> 1.0", only: :test},
       {:httpoison, "~> 1.7"},
       {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
-      {:credo, "~> 1.4"}
+      {:credo, "~> 1.4"},
+      {:excoveralls, "~> 0.13.3", only: [:dev, :test]}
     ]
   end
 
@@ -75,7 +84,8 @@ defmodule BaseApi.MixProject do
       setup: ["deps.get", "ecto.setup"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"]
+      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
+      t: ["ecto.reset", "coveralls", "dialyzer"]
     ]
   end
 end

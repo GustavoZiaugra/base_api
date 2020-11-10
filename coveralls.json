@@ -1,0 +1,32 @@
+{
+  "default_stop_words": [
+    "defmodule",
+    "defrecord",
+    "defimpl",
+    "defexception",
+    "defprotocol",
+    "defstruct",
+    "def.+(.+\\\\.+).+do",
+    "^\\s+use\\s+"
+  ],
+
+  "custom_stop_words": [
+  ],
+
+    "skip_files": [
+      "lib/base_api/application.ex",
+      "lib/base_api.ex",
+      "lib/repo.ex",
+      "test/support/"
+  ],
+
+  "coverage_options": {
+    "treat_no_relevant_lines_as_covered": true,
+    "output_dir": "cover/",
+    "minimum_coverage": 0
+  },
+
+  "terminal_options": {
+      "file_column_width": 60
+  }
+}
