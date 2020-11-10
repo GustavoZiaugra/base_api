@@ -56,7 +56,7 @@ jobs:
 
       - name: Run Test Suite
         run: |
-          MIX_ENV=test mix test
+          MIX_ENV=test mix coveralls
 
       - name: Run Credo
         run: MIX_ENV=test mix credo -C github_actions
